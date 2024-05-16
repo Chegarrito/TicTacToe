@@ -1,4 +1,5 @@
-
+// EDGAR ORTIZ JR
+// ROCK PAPER SCISSORS
 // Choices that the player has, rock, paper, scissors
 const SIZE = 3
 const TOTALROUNDS = 5
@@ -198,5 +199,6 @@ for (let i = 1; i <= TOTALROUNDS; i++){
     // PLAY game
     playGame();
 }
-
+// Theres only one champ!!
 printChampion();
+
