@@ -40,14 +40,16 @@ ElSE
 */
 function welcome(){
     console.log("TIC TAC TOE");
+
 }
 function printTicTacToe(){
+    let count = 1;
     for( i = 0; i < 3; i++){
-        console.log("|...|...|...|");
+        console.log("|",count ,"|",count + 1,"|",count + 2,"|");
         if (i < 2){
             console.log("_____________");
         }
-        
+        count += 3;
     }
     
 }
