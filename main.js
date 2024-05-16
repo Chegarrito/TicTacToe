@@ -15,23 +15,40 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-    humanChoices = prompt("ROCK, PAPER OR SCISSORS");
+    let condition = false;
+    let humanChoices;
+    do{
+        humanChoices = prompt("YOUR TURN","ROCK, PAPER OR SCISSORS");
+        humanChoices = humanChoices.toUpperCase();
+        if (humanChoices === 'ROCK' || humanChoices === 'PAPER' || humanChoices === 'SCISSORS'){
+            return humanChoices
+        }
+    }while(condition == false)
     return humanChoices;
 }
 
-
+function printChoices(){
+    console.log(computerChoice);
+    console.log(humanChoice);
+}
+function printScore(humanScore, computerScore){
+    console.log("Jugador: ", humanScore, "-", computerScore, " : Computadora");
+}
 // PRINT welcome    
 welcome();
-// DRAW board
-printTicTacToe();
-
-// DECLARATION OF VARIABLES
 
 // GET computer choice
-let computerChoice = getComputerChoice(); // console.log(computerChoice);
+let computerChoice = getComputerChoice();  
 
 // GET human choice
-let humanChoice = getHumanChoice(); //console.log(humanChoice);
+let humanChoice = getHumanChoice(); 
 
+
+// SET human score
 let humanScore = 0;
+
+// SET computer score
 let computerScore = 0;
+
+// printChoices();
+printScore(humanScore, computerScore);
