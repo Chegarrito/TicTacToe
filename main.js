@@ -38,3 +38,19 @@ ElSE
     VERIFY winner
     
 */
+function welcome(){
+    console.log("TIC TAC TOE");
+}
+function printTicTacToe(){
+    for( i = 0; i < 3; i++){
+        console.log("|...|...|...|");
+        if (i < 2){
+            console.log("_____________");
+        }
+        
+    }
+    
+}
+
+welcome();
+printTicTacToe();
