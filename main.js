@@ -39,7 +39,10 @@ ElSE
     VERIFY winner
     
 */
-
+// Widht of the hashmap
+const ARRWIDTH = 3
+// Height of the hashmap
+const ARRHEIGHT = 3
 // PRINT welcome
 function welcome(){
     console.log("TIC TAC TOE");
@@ -63,7 +66,7 @@ function printTicTacToe(){
         count += 3;
     }
 }
-// SET player Symbol
+// GET player Symbol
 function playerSymbol(){
     let condition = false;
     do{
@@ -80,7 +83,7 @@ function playerSymbol(){
     while(condition === false);
     
 }
-
+// SET computer symbol at the tictactoe game X/O
 function computerSymbols(player1Symbol){
     computerSymbol = '';
     if (player1Symbol === 'X'){
@@ -92,16 +95,28 @@ function computerSymbols(player1Symbol){
         return computerSymbol;
     }
 }
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+
+function getComputerChoice() {
+    getRandomInt(3);
+}
+
+function getHumanChoice() {
+
+}
 
 // PRINT welcome
 welcome();
 // DRAW board
 printTicTacToe();
-// SET player symbol
-let playerSign = playerSymbol();
-// SET computer symbol
-let computerSign = computerSymbols(playerSign);
+//CREATE hash map/grid 3x3
 
+// GET player symbol at the tictactoe game. (X or O)
+let humanSign = playerSymbol();
+// SET computer symbol 
+let computerSign = computerSymbols(humanSign);
 
-console.log("Player symbol: ", playerSign);
-console.log("Computer symbol: ", computerSign);
+getHumanChoice();
+getComputerChoice()
