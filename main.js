@@ -97,30 +97,40 @@ function getRandomInt(max) {
   }
 
 function getComputerChoice() {
-    getRandomInt(3);
+    return getRandomInt(SIZE);
 }
 
 function getHumanChoice() {
 
 }
-function createHash(){
-    let matrix = [];
+function createHash(matrix){
     for(let i=0; i< SIZE; i++) {
         matrix[i] = new Array(SIZE);
     }
     return matrix;
 }
+
 // PRINT welcome    
 welcome();
+
 // DRAW board
 printTicTacToe();
+
 //CREATE hash 
 hash = [];
-hash = createHash(hash);
-// GET player symbol at the tictactoe game. (X or O)
-let humanSign = playerSymbol();
-// SET computer symbol 
-let computerSign = computerSymbols(humanSign);
+createHash(hash);
 
+// GET player symbol at the tictactoe game. (X or O)
+//let humanSign = playerSymbol();
+
+// SET computer symbol 
+//let computerSign = computerSymbols(humanSign);
+
+
+// GET computer choice
+let computerChoice = getComputerChoice();
+
+// GET human choice
 getHumanChoice();
-getComputerChoice()
+
+console.log(computerChoice);
