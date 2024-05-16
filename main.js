@@ -1,6 +1,7 @@
 
 // Choices that the player has, rock, paper, scissors
 const SIZE = 3
+const TOTALROUNDS = 5
 // PRINT welcome
 
 // function convertToNum(humanChoice)
@@ -116,12 +117,48 @@ function intToHandSign(computerChoice){
     if (computerChoice === 1){return "PAPER";}
     if (computerChoice === 2){return "SCISSORS";}
 }
-function printChoices(){
+function playGame(){
+        // GET computer choice
+    let computerChoice = getComputerChoice();  
+
+    // TRANSFORM computer choice from number to hand sign
+    let compHandSign = intToHandSign(computerChoice);
+
+    // GET human choice
+    let humanChoice = getHumanChoice(); 
+    let humanChoiceNumber = convertToNum(humanChoice);
+
+    
+
+
+    // printChoices();
+    printScore(score);
+    printChoices(humanChoice, compHandSign);
+
+    // Run the logic behind the game
+    let winner = playRound(humanChoiceNumber, computerChoice);
+
+    // PRINT winner
+    printWinner(winner);
+
+    // SET new score 
+    score = updateScores(winner, score);
+    // PRINT SCORE
+    printScore(score);
+
+}
+function printChampion(){
+    // IF the human score is more than the computer score
+    if(score[0] === score[1]){console.log("TIE! WHAT A GREAT BATTLE")}
+    if(score[0] > score[1]){console.log("PLAYER IS THE NEW CHAMPION");}
+    if(score[1] > score[0]){console.log("COMPUTER IS THE NEW CHAMPION");}
+}
+function printChoices(humanChoice, compHandSign){
     console.log("COMPUTER: " + compHandSign);
     console.log("PLAYER: " + humanChoice);
 }
-function printScore(humanScore, computerScore){
-    console.log("Jugador: ", humanScore, "-", computerScore, " : Computadora");
+function printScore(score){
+    console.log("Jugador: ", score[0], "-", score[1], " : Computadora");
 }
 
 function printWinner(winner){
@@ -130,36 +167,36 @@ function printWinner(winner){
     if (winner === "COMPUTER"){console.log("COMPUTER WINS!");}
 
 }
+// FUNCTION updateScores
+function updateScores(winner, score){
+// IF TIE do nothing
+if (winner === "TIE"){return score;}
+// IF computer wins computer score goes up by 1
+if (winner === "HUMAN"){
+    score[0] = score[0] + 1;
+    return score;
+}
+// IF player wins player score goes up by 1
+if (winner === "COMPUTER"){
+    score[1]= score[1] + 1;
+    return score;
+}
+}
+
 function welcome(){
     console.log("ROCK PAPER SCISSORS VS COMPUTER");
 }
 
 // PRINT welcome    
 welcome();
+// SET  score
+let score = [0,0]
+// FOR 5 rounds
+for (let i = 1; i <= TOTALROUNDS; i++){
+    //PRINT round number
+    console.log("ROUND " + i);
+    // PLAY game
+    playGame();
+}
 
-// GET computer choice
-let computerChoice = getComputerChoice();  
-
-// TRANSFORM computer choice from number to hand sign
-let compHandSign = intToHandSign(computerChoice);
-
-// GET human choice
-let humanChoice = getHumanChoice(); 
-
-let humanChoiceNumber;
-humanChoiceNumber = convertToNum(humanChoice);
-
-// SET human score
-let humanScore = 0;
-
-// SET computer score
-let computerScore = 0;
-
-
-// printChoices();
-printScore(humanScore, computerScore);
-printChoices();
-
-let winner = playRound(humanChoiceNumber, computerChoice);
-
-printWinner(winner);
+printChampion();
