@@ -51,37 +51,85 @@ function getHumanChoice() {
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
-function playRound(humanChoice, computerChoice) {
+function playRound(humanChoiceNumber, computerChoice) {
 
 // ROCK = 0; PAPER = 1; SCISSORS = 2 dictionary??
 // Rock < Paper < Scissors < Rock ..
 // 0 < 1 < 2 < 0
 //    GET humanChoice
+    let humanTurn = humanChoiceNumber;
 //    GET computerChoice
-
+    let computerTurn = computerChoice;
 //    IF humanChoice and computerChoice are the same number
-//        return TIE!
-//    ELSE IF the absolute value of |humanChoice - computerChoice| equals 2
-//        IF human player choice is less than the computer choice 
-//            RETURN human player wins
-//        ELSE
-//            RETURN computer wins
+    if(humanChoiceNumber === computerChoice)
+        {
+    //        return TIE
+            return 'TIE';
+           
 
+        }
+//    ELSE IF the absolute value of |humanChoice - computerChoice| equals 2
+// ROCK VS SCISSORS
+    else if (Math.abs(humanChoiceNumber - computerChoice) === 2){
+//        IF human player choice is less than the computer choice 
+//          IF HUMAN CHOOSES ROCK AND COMPUTER CHOOSES SCISSORS
+            if(humanChoiceNumber < computerChoice){
+//            RETURN human player wins
+                return "HUMAN";
+            }
+//         ELSE
+            else{
+//            RETURN computer wins
+                return "COMPUTER";
+            }
+        }       
 //    ELSE IF the absolute value of humanChoice - computerChoice equals 1
-//        IF humanChoice is more than computerScore
-//            RETURN human wins
-//        else
-//        computer wins
+//  ROCK VS PAPER / PAPER VS SCISSORS / 
+    else if (Math.abs(humanChoiceNumber - computerChoice) === 1){
+//        IF HUMAN PAPER VS COMPUTER ROCK
+//                  0       1        2
+//                  ROCK    PAPER  SCIS
+
+//       HUMAN = 0 ROCK
+//       COMPUTER = 1 PAPER
+//      COMPUTER > HUMAN
+//      RETURN COMPUTER
+        if(computerChoice < humanChoiceNumber){
+    //            RETURN human wins
+            return "HUMAN";
+        }
+//        ELSE is COMPUTER PAPER VS HUMAN ROCK          0       1        2
+                                    //                  ROCK    PAPER  SCIS
+        else{
+            //        computer wins
+            return "COMPUTER";
+        }
+
+
+
+    }
 
 }
+// function CONVERTS number to rock, paper or scissors
+function intToHandSign(computerChoice){
+    if (computerChoice === 0){return "ROCK";}
+    if (computerChoice === 1){return "PAPER";}
+    if (computerChoice === 2){return "SCISSORS";}
+}
 function printChoices(){
-    console.log(computerChoice);
-    console.log(humanChoice);
+    console.log("COMPUTER: " + compHandSign);
+    console.log("PLAYER: " + humanChoice);
 }
 function printScore(humanScore, computerScore){
     console.log("Jugador: ", humanScore, "-", computerScore, " : Computadora");
 }
 
+function printWinner(winner){
+    if (winner === "TIE"){console.log("TIE!");}
+    if (winner === "HUMAN"){console.log("PLAYER WINS!");}
+    if (winner === "COMPUTER"){console.log("COMPUTER WINS!");}
+
+}
 function welcome(){
     console.log("ROCK PAPER SCISSORS VS COMPUTER");
 }
@@ -91,6 +139,9 @@ welcome();
 
 // GET computer choice
 let computerChoice = getComputerChoice();  
+
+// TRANSFORM computer choice from number to hand sign
+let compHandSign = intToHandSign(computerChoice);
 
 // GET human choice
 let humanChoice = getHumanChoice(); 
@@ -104,7 +155,11 @@ let humanScore = 0;
 // SET computer score
 let computerScore = 0;
 
+
 // printChoices();
 printScore(humanScore, computerScore);
+printChoices();
 
-playRound(humanChoice, computerChoice);
+let winner = playRound(humanChoiceNumber, computerChoice);
+
+printWinner(winner);
