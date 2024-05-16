@@ -30,6 +30,7 @@ ElSE
 
 */
 /*
+    PRINT welcome
     DRAW board
     SET player symbol
     SET computer symbol
@@ -38,21 +39,69 @@ ElSE
     VERIFY winner
     
 */
+
+// PRINT welcome
 function welcome(){
     console.log("TIC TAC TOE");
 
 }
+
+// DRAW board
 function printTicTacToe(){
+    // SET count to 1
     let count = 1;
+    // FOR 3 rows
     for( i = 0; i < 3; i++){
+        // PRINT |1|2|3|
         console.log("|",count ,"|",count + 1,"|",count + 2,"|");
+        // IF we are before the last row
         if (i < 2){
+            // PRINT underline
             console.log("_____________");
         }
+        // Add 3 to the count
         count += 3;
     }
+}
+// SET player Symbol
+function playerSymbol(){
+    let condition = false;
+    do{
+        // GET symbol from user
+        let x_or_O = prompt("Choose your symbol for this game", "X / O");
+        // CONVERT to upper case
+        x_or_O = x_or_O.toUpperCase();
+        // IF the symbol is right
+        if  (x_or_O === "X" || x_or_O === "O"){
+            // return symbol
+            return x_or_O;
+        }
+    }
+    while(condition === false);
     
 }
 
+function computerSymbols(player1Symbol){
+    computerSymbol = '';
+    if (player1Symbol === 'X'){
+        computerSymbol = "O";
+        return computerSymbol;
+    }
+    else {
+        computerSymbol = "X";
+        return computerSymbol;
+    }
+}
+
+// PRINT welcome
 welcome();
+// DRAW board
 printTicTacToe();
+// SET player symbol
+let playerSign = playerSymbol();
+// SET computer symbol
+let computerSign = computerSymbols(playerSign);
+
+
+console.log("Player symbol: ", playerSign);
+console.log("Computer symbol: ", computerSign);
