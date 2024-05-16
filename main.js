@@ -39,10 +39,7 @@ ElSE
     VERIFY winner
     
 */
-// Widht of the hashmap
-const ARRWIDTH = 3
-// Height of the hashmap
-const ARRHEIGHT = 3
+const SIZE = 9
 // PRINT welcome
 function welcome(){
     console.log("TIC TAC TOE");
@@ -106,13 +103,20 @@ function getComputerChoice() {
 function getHumanChoice() {
 
 }
-
-// PRINT welcome
+function createHash(){
+    let matrix = [];
+    for(let i=0; i< SIZE; i++) {
+        matrix[i] = new Array(SIZE);
+    }
+    return matrix;
+}
+// PRINT welcome    
 welcome();
 // DRAW board
 printTicTacToe();
-//CREATE hash map/grid 3x3
-
+//CREATE hash 
+hash = [];
+hash = createHash(hash);
 // GET player symbol at the tictactoe game. (X or O)
 let humanSign = playerSymbol();
 // SET computer symbol 
