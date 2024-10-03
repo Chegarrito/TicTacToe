@@ -191,15 +191,14 @@ function welcome(){
 // PRINT welcome    
 welcome();
 // SET  score
-let score = [0,0]
-
-// PLAY game
-playGame();
+let score = [0,0];
 
 // Declaration of the buttons
 const rock = document.querySelector("#rock");
 const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
+
+addEventListener
 
 // Theres only one champ!!
 printChampion();
