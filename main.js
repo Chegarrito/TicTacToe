@@ -199,7 +199,9 @@ const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
 
 
-
+rock.addEventListener("click", () => {
+    console.log("rock")
+})
 // Theres only one champ!!
 //printChampion();
 
