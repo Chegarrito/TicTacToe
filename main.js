@@ -196,6 +196,11 @@ let score = [0,0]
 // PLAY game
 playGame();
 
+// Declaration of the buttons
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
+
 // Theres only one champ!!
 printChampion();
 
