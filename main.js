@@ -192,13 +192,10 @@ function welcome(){
 welcome();
 // SET  score
 let score = [0,0]
-// FOR 5 rounds
-for (let i = 1; i <= TOTALROUNDS; i++){
-    //PRINT round number
-    console.log("ROUND " + i);
-    // PLAY game
-    playGame();
-}
+
+// PLAY game
+playGame();
+
 // Theres only one champ!!
 printChampion();
 
