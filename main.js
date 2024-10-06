@@ -155,8 +155,7 @@ function printChampion(){
     if(score[1] > score[0]){console.log("COMPUTER IS THE NEW CHAMPION");}
 }
 function printChoices(humanChoice, compHandSign){
-    console.log("COMPUTER: " + compHandSign);
-    console.log("PLAYER: " + humanChoice);
+    console.log("PLAYER : " + humanChoice + " VS " + compHandSign + " : COMPUTER");
 }
 function printScore(score){
     console.log("Jugador: ", score[0], "-", score[1], " : Computadora");
@@ -199,7 +198,15 @@ const buttons = document.querySelectorAll("button");
 buttons.forEach((button)=> {
     button.addEventListener("click", () => {
         let humanChoice = button.id;
-        playRound(humanChoice,);
+        humanChoice = humanChoice.toUpperCase();
+        let humanNumberChoice = convertToNum(humanChoice);
+        console.log(humanNumberChoice);
+        let computerNumberChoice = getComputerChoice();
+        let compHandSign = intToHandSign(computerNumberChoice);
+
+        printChoices(humanChoice, compHandSign);
+        let winner = playRound(humanNumberChoice, computerNumberChoice);
+        printWinner(winner);
     });
 });
 // Theres only one champ!!
