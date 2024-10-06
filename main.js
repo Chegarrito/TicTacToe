@@ -194,19 +194,13 @@ welcome();
 let score = [0,0];
 
 // Declaration of the buttons
-const rock = document.querySelector("#rock");
-const paper = document.querySelector("#paper");
-const scissors = document.querySelector("#scissors");
+const buttons = document.querySelectorAll("button");
 
-
-rock.addEventListener("click", () => {
-    console.log("rock");
-});
-paper.addEventListener("click", () => {
-    console.log("paper");
-});
-scissors.addEventListener("click", () => {
-    console.log("scissors");
+buttons.forEach((button)=> {
+    button.addEventListener("click", () => {
+        let humanChoice = button.id;
+        console.log(humanChoice);
+    });
 });
 // Theres only one champ!!
 //printChampion();
