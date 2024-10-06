@@ -37,7 +37,7 @@ function getComputerChoice() {
     return getRandomInt(SIZE);
 }
 
-function getHumanChoice() {
+/* function getHumanChoice() {
     let condition = false;
     let humanChoices;
     do{
@@ -48,7 +48,7 @@ function getHumanChoice() {
         }
     }while(condition == false)
     return humanChoices;
-}
+} */
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -199,7 +199,7 @@ const buttons = document.querySelectorAll("button");
 buttons.forEach((button)=> {
     button.addEventListener("click", () => {
         let humanChoice = button.id;
-        console.log(humanChoice);
+        playRound(humanChoice,);
     });
 });
 // Theres only one champ!!
