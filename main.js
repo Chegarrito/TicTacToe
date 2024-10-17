@@ -171,6 +171,12 @@ function printDOMRoundWinner(winner){
     if (winner === "COMPUTER"){divResult.textContent = "COMPUTER WINS!";}
     container.appendChild(divResult)
 }
+function printDOMScore(score){
+    const container = document.querySelector("#container");
+    const divScore = document.createElement("div");
+    divScore.textContent = `SCORE \n PLAYER ${score[0]} COMPUTER ${score[1]}`;
+    container.appendChild(divScore);
+}
 function printScore(score){
     console.log("Jugador: ", score[0], "-", score[1], " : Computadora");
 }
@@ -205,12 +211,15 @@ function welcome(){
 welcome();
 // SET  score
 let score = [0,0];
-
 // Declaration of the buttons
+printDOMScore(score);
+
 const buttons = document.querySelectorAll("button");
 
 buttons.forEach((button)=> {
     button.addEventListener("click", () => {
+        
+
         let humanChoice = button.id;
         humanChoice = humanChoice.toUpperCase();
         let humanNumberChoice = convertToNum(humanChoice);
@@ -222,6 +231,8 @@ buttons.forEach((button)=> {
         let winner = playRound(humanNumberChoice, computerNumberChoice);
         printWinner(winner);
         printDOMRoundWinner(winner);
+        updateScores(winner, score);
+        printDOMScore(score);
     });
 });
 // Theres only one champ!!
