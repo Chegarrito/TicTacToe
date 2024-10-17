@@ -157,6 +157,12 @@ function printChampion(){
 function printChoices(humanChoice, compHandSign){
     console.log("PLAYER : " + humanChoice + " VS " + compHandSign + " : COMPUTER");
 }
+function printChoicesDOM(humanChoice, compHandSign){
+    const container = document.querySelector("#container");
+    const div = document.createElement("div");
+    div.textContent = `PLAYER : ${humanChoice} VS ${compHandSign} : COMPUTER`;
+    container.appendChild(div);
+}
 function printScore(score){
     console.log("Jugador: ", score[0], "-", score[1], " : Computadora");
 }
@@ -200,15 +206,14 @@ buttons.forEach((button)=> {
         let humanChoice = button.id;
         humanChoice = humanChoice.toUpperCase();
         let humanNumberChoice = convertToNum(humanChoice);
-        console.log(humanNumberChoice);
         let computerNumberChoice = getComputerChoice();
         let compHandSign = intToHandSign(computerNumberChoice);
 
         printChoices(humanChoice, compHandSign);
+        printChoicesDOM(humanChoice, compHandSign);
         let winner = playRound(humanNumberChoice, computerNumberChoice);
         printWinner(winner);
     });
 });
 // Theres only one champ!!
 //printChampion();
-
