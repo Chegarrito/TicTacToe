@@ -5,6 +5,27 @@ const SIZE = 3
 const TOTALROUNDS = 5
 // PRINT welcome
 
+function checkWinner(score){
+    if(score[0] === 5){
+        const container = document.querySelector("#container");
+        const divWinner = document.createElement("div");
+        divWinner.textContent = "PLAYER WINS THE GAME!!!!!!!";
+        divWinner.style.backgroundColor = "green";
+        divWinner.style.padding = "25px";
+        divWinner.style.alignContent = "center";
+        container.appendChild(divWinner);
+        
+    }
+    else if(score[1] === 5){
+        const container = document.querySelector("#container");
+        const divWinner = document.createElement("div");
+        divWinner.textContent = "COMPUTER WINS THE GAME!!!!!!!";
+        divWinner.style.backgroundColor = "red";
+        divWinner.style.padding = "25px";
+        divWinner.style.alignContent = "center";
+        container.appendChild(divWinner);
+    }
+}
 // function convertToNum(humanChoice)
 function convertToNum(humanChoice){
 //    IF humanChoice is ROCK
@@ -166,15 +187,16 @@ function printChoicesDOM(humanChoice, compHandSign){
 function printDOMRoundWinner(winner){
     const container = document.querySelector("#container");
     const divResult = document.createElement("div");
-    if (winner === "TIE"){divResult.textContent = "TIE!";}
-    if (winner === "HUMAN"){divResult.textContent = "PLAYER WINS!";}
-    if (winner === "COMPUTER"){divResult.textContent = "COMPUTER WINS!";}
+    if (winner === "TIE"){divResult.textContent = "TIE!"; divResult.style.backgroundColor = "gray";}
+    if (winner === "HUMAN"){divResult.textContent = "PLAYER WINS THE ROUND!"; divResult.style.backgroundColor = "lightgreen";}
+    if (winner === "COMPUTER"){divResult.textContent = "COMPUTER WINS THE ROUND!"; divResult.style.backgroundColor = "#fd5c63";}
     container.appendChild(divResult)
 }
 function printDOMScore(score){
     const container = document.querySelector("#container");
     const divScore = document.createElement("div");
     divScore.textContent = `SCORE \n PLAYER ${score[0]} COMPUTER ${score[1]}`;
+    divScore.style.backgroundColor = "lightblue";
     container.appendChild(divScore);
 }
 function printScore(score){
@@ -215,7 +237,7 @@ let score = [0,0];
 printDOMScore(score);
 
 const buttons = document.querySelectorAll("button");
-
+const playAgain = document.querySelector("#playAgain");
 buttons.forEach((button)=> {
     button.addEventListener("click", () => {
         
@@ -233,7 +255,9 @@ buttons.forEach((button)=> {
         printDOMRoundWinner(winner);
         updateScores(winner, score);
         printDOMScore(score);
+        checkWinner(score)
     });
 });
+
 // Theres only one champ!!
 //printChampion();
